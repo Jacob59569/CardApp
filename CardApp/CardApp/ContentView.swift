@@ -9,14 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "folder.fill")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, jacob, what a great day!")
+        ZStack {
+            
+            RoundedRectangle(cornerRadius: 40)
+                .stroke(lineWidth: 10)
                 
+//                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            
+            Text("Hello, jacob, what a great day!")
+                .font(.title2)
+//                .foregroundColor(Color.purple)
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            
         }
-        .padding()
+        .padding(.all)
+        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            
     }
 }
 
