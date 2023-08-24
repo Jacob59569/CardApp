@@ -23,6 +23,8 @@ struct ContentView: View {
 
 struct CardView: View {
     @State var isFaceUp: Bool = true
+    var content: String = "✈️"
+    
     var body: some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 25)
@@ -32,7 +34,7 @@ struct CardView: View {
                 shape
                     .fill(.white)
                 
-                Text("✈️")
+                Text(content)
                     .font(.largeTitle)
                     .padding()
             } else {
