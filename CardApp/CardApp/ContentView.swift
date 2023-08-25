@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🛟", "🛥️", "🛶", "🚤","🛟", "🚖", "⛽️", "⚓️","🚀", "🚆", "🚝", "🚠","🚧", "🏎️", "🗽", "🚚","🚉", "🏎️", "🚗", "🚑",]
+    var emojis = ["🛟", "🛥️", "🛶", "🚤","🚜", "🚖", "⛽️", "⚓️","🚀", "🚆", "🚝", "🚠","🚧", "🏎️", "🗽", "🚚","🚉", "🏎️", "🚗", "🚑",]
     @State var emojiCount = 3
     var body: some View {
         VStack{
@@ -18,17 +18,31 @@ struct ContentView: View {
                 }
                 
                 .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .padding(3)
             }
+            .padding()
+            Spacer()
             HStack{
-                Button(action: {emojiCount += 1}) {
-                        Label("Add new card", systemImage: "plus")
-                    }
-                Button(action: {emojiCount -= 1}) {
-                        Label("take away card", systemImage: "minus")
-                    }
+                remove
+                Spacer()
+                add
             }
-        }
+            .font(.largeTitle)
+            .padding(.horizontal)
             
+        }
+        
+        
+            
+    }
+    var add: some View {
+        Button(action: {
+            if emojiCount < emojis.count { emojiCount += 1 } }, label: {Image(systemName: "plus.app")})
+    }
+    
+    var remove: some View {
+        Button(action: {
+            if emojiCount > 1 { emojiCount -= 1 }}, label: {Image(systemName: "minus.square")})
     }
 }
 
@@ -47,7 +61,7 @@ struct CardView: View {
                 
                 Text(content)
                     .font(.largeTitle)
-                    .padding()
+                    
             } else {
                 shape
                     .fill()
