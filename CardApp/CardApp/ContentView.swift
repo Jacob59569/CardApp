@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🛟", "🛥️", "🛶", "🚤","🚜", "🚖", "⛽️", "⚓️","🚀", "🚆", "🚝", "🚠","🚧", "🏎️", "🗽", "🚚","🚉", "🏎️", "🚗", "🚑",]
-    @State var emojiCount = 3
+    var emojis = ["🛟", "🛥️", "🛶", "🚤","🚜", "🚖", "⛽️", "⚓️","🚀", "🚆", "🚝", "🚠","🚧", "🏎️", "🗽", "🚚","🚉", "🛺", "🚗", "🚑", "🛵", "🏍️", "🚲", "🚛"]
+    @State var emojiCount = 24
     var body: some View {
-        VStack{
-            HStack {
-                ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
-                    CardView(content: emoji)
+        VStack {
+            ScrollView{
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                        CardView(content: emoji).aspectRatio(2/3 , contentMode: .fit)
+                    }
+                    
+                    .foregroundColor(.red)
+                    .padding(3)
                 }
-                
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .padding(3)
+                .padding()
             }
-            .padding()
             Spacer()
             HStack{
                 remove
@@ -55,9 +57,10 @@ struct CardView: View {
             let shape = RoundedRectangle(cornerRadius: 25)
             if isFaceUp {
                 shape
-                    .stroke(lineWidth: 10)
-                shape
                     .fill(.white)
+                shape
+                    .strokeBorder(lineWidth: 3)
+                
                 
                 Text(content)
                     .font(.largeTitle)
